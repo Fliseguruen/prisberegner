@@ -1,0 +1,34 @@
+{
+  "script-ts": {
+    "prefix": "script",
+    "body": [
+      "<script lang='ts'>",
+      "  $1",
+      "</script>",
+    ]
+  },
+  "onclick": {
+    "prefix": "onclick",
+    "body": "onclick={$1}"
+  },
+  "snippet": {
+    "prefix": "snippet",
+    "body": [
+      "{#snippet ${1:Snippet}}",
+      "  $2",
+      "{/snippet}"
+    ]
+  },
+  "Icon": {
+    "prefix": "Icon",
+    "body": "<Icon src={$1} />"
+  },
+  "IIcon": {
+    "prefix": "IIcon",
+    "body": "import { Icon } from '@steeze-ui/svelte-icon'"
+  },
+  "ILucide": {
+    "prefix": "ILucide",
+    "body": "import { $1 } from '@steeze-ui/lucide-icons'"
+  },
+}
