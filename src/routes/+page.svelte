@@ -10,7 +10,7 @@
 
   let calculated = $state<number>()
 
- async function onsubmit() {
+  async function onsubmit() {
     await fetch("https://api.emailjs.com/api/v1.0/email/send", {
       method: "POST",
       headers: {
