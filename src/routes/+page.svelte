@@ -10,26 +10,21 @@
 
   let calculated = $state<number>()
 
-  async function onsubmit() {
-    if (phone === 60735600 || phone === 60705060) {
-    console.log(phone.valueOf)
-    return
-    } else
-      await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          service_id: "service_mhhltql",
-          user_id: "myQNiBZmk-FiNll9u",
-          template_id: "template_qfczsul",
-          template_params: {
-            fliser,
-            phone,
-            pack,
-            calculated
-            
+ async function onsubmit() {
+    await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        service_id: "service_mhhltql",
+        user_id: "myQNiBZmk-FiNll9u",
+        template_id: "template_qfczsul",
+        template_params: {
+          fliser,
+          phone,
+          pack,
+          calculated
         }
       })
     })
