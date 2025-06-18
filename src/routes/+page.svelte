@@ -1,7 +1,6 @@
 <script lang='ts'>
   import Input from "$lib/components/input.svelte"
-  import { Check } from "@steeze-ui/lucide-icons"
-  import { Icon } from "@steeze-ui/svelte-icon"
+  import Pakke from "$lib/components/pakke.svelte"
   import { fly } from "svelte/transition"
 
   let fliser = $state<number>()
@@ -77,47 +76,6 @@
   }
 </script>
 
-{#snippet Pakke({ name, price, startPrice, includes }: {
-  name: string
-  price: number
-  startPrice: number,
-  includes: string[]
-})}
-  {@const selected = pack == name}
-  <div class="flex flex-col gap-4 w-80">
-    <div class="flex flex-col items-center">
-      <h1 class="font-bold">
-        {name}pakken
-      </h1>
-      <p class="text-accent text-xl font-semibold">
-        {price} kr. pr. kvadratmeter
-      </p>
-      <small class="text-xs text-white/50 mt-2 text-center">
-        Startpris {startPrice} kr. Inkl. 35 kvadratmeter, derefter {price} kr. pr. kvadratmeter. Bemærk at vi benytter os af dit vand.
-      </small>
-    </div>
-    <button
-      onclick={() => {
-        pack = name
-        calculate()
-      }}
-      class="border border-accent w-full py-2 rounded {selected && "bg-accent"}"
-    >
-      {selected ? "Valgt" : "Vælg"}
-    </button>
-    <ul class="flex flex-col divide-y-[1px] divide-white/10">
-      {#each includes as include}
-        <li class="flex items-center gap-4 p-2">
-          <Icon src={Check} class="min-w-5 w-5" />
-          <p class="text-sm">
-            {include}
-          </p>
-        </li>
-      {/each}
-    </ul>
-  </div>
-{/snippet}
-
 <div class="flex flex-col items-center">
   <form
     {onsubmit}
@@ -151,7 +109,7 @@
 
     <div class="flex min-[850px]:flex-row min-[850px]:items-start flex-col items-center justify-center gap-4 bg-main w-full text-white p-6 pt-32 relative">
       {#each Object.values(packs) as options}
-        {@render Pakke(options)}
+        <Pakke bind:pack {...options} {calculate} />
       {/each}
       <div class="flex flex-col items-center justify-center absolute bg-accent w-80 rounded h-24 top-0 -translate-y-1/2">
         <p class="text-[#BE520F] font-bold text-lg">
